@@ -1,26 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Sol_Asynchronous_Streams
 {
-    class Program
+    internal class Program
     {
-         static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
-
-
-            Task.Run(async () => {
-                await foreach (var i in GnerateNumber())
-                {
-                    Console.WriteLine(i);
-                }
-            }).Wait();
-
-            
+            await foreach (var i in GenerateNumber())
+            {
+                Console.WriteLine(i);
+            };
         }
 
-        private async static IAsyncEnumerable<int> GnerateNumber()
+        private async static IAsyncEnumerable<int> GenerateNumber()
         {
             for (int i = 0; i < 100; i++)
             {
